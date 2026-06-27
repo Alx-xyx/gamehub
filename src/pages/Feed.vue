@@ -4,12 +4,13 @@ import CreatePost from '../components/CreatePost.vue';
 import Posteos from '../components/Posteos.vue';
 import { subscribeToAuthStateChanges } from '../services/auth.js';
 import { fetchPosts, createPost, subscribeToPosts } from '../services/posts.js';
+import PublicChat from '../components/PublicChat.vue';
 
 let unsubscribeFromPosts = () => {};
 
 export default {
     name: 'Feed',
-    components: {BaseH1, Posteos, CreatePost},
+    components: {BaseH1, Posteos, CreatePost, PublicChat},
     data() {
         return {
             posts: [],
@@ -76,12 +77,12 @@ export default {
             <div
                 v-for="post in posts"
                 :key="post.id"
-                class="mt-2 bg-zinc-950/50 border border-zinc-800/50 rounded-xl p-5 hover:border-blue-800/40 transition-all duration-300 group reveal-el duration-700"
+                class="mt-2 bg-zinc-950/50 border border-zinc-800/50 rounded-xl p-5 hover:border-blue-800/40 transition-all group reveal-el duration-700"
             >
                 <Posteos :post="post" />
             </div>
-        </section>
-        <section class="w-1/4 mt-4">
+        </section> 
+        <section class="flex flex-col gap-4 w-1/4 mt-4">
             <CreatePost 
                 :user="user"
                 @send-post="sendPost"
