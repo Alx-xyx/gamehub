@@ -2,6 +2,7 @@
 import BaseH1 from '../components/BaseH1.vue';
 import ProfileData from '../components/ProfileData.vue';
 import { subscribeToAuthStateChanges } from '../services/auth';
+import { fetchUserProfileById } from '../services/user-profiles.js';
 
     export default {
         name: 'MyProfile',
@@ -18,7 +19,10 @@ import { subscribeToAuthStateChanges } from '../services/auth';
             }
         },
         mounted(){
-            subscribeToAuthStateChanges(userData => this.user = userData);
+            subscribeToAuthStateChanges(async userData => {
+                this.user = userData;
+                if(!userData.id) return;
+            });
         }
     }
 </script>
