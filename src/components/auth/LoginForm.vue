@@ -42,8 +42,8 @@
                     class="border border-gray-300 rounded"
                     v-model="user.email"
                 >
-                </div>
-                <div class="mb-3">
+            </div>
+            <div class="mb-3">
                     <label for="password" class="block m-1 text-white">Contraseña</label>
                     <input 
                         type="password" 
@@ -51,7 +51,7 @@
                         class="border border-gray-300 rounded"
                         v-model="user.password"
                     >
-                </div>
+            </div>
                 <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Ingresar</button>
             </form>
     </section>

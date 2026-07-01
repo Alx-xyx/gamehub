@@ -20,7 +20,7 @@ import { fetchUserProfileById } from '../services/user-profiles.js';
         },
         mounted(){
             subscribeToAuthStateChanges(async userData => {
-                this.user = userData;
+                this.user = {...userData};
                 if(!userData.id) return;
             });
         }
@@ -29,5 +29,6 @@ import { fetchUserProfileById } from '../services/user-profiles.js';
 
 <template>
     <BaseH1 class>Mi perfil</BaseH1>
+    <RouterLink to="/perfil/editar" class="mb-4 text-blue-700 underline">Editar</RouterLink>
     <ProfileData :user="user"/>
 </template>

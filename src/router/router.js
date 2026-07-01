@@ -6,6 +6,7 @@ import Register from '../pages/Register.vue'
 import Home from '../pages/Home.vue'
 import { subscribeToAuthStateChanges } from '../services/auth'
 import Profile from '../pages/Profile.vue'
+import EditProfile from '../pages/EditProfile.vue'
 
 //? Creacion de rutas
 
@@ -15,6 +16,7 @@ const routes = [
     {path: '/crear-cuenta', component: Register },
     {path: '/feed', component: PublicChat, meta: { requiresAuth: true } },
     {path: '/perfil', component: Profile, meta: { requiresAuth: true } },
+    {path: '/perfil/editar', component: EditProfile, meta: { requiresAuth: true } },
 ]
 
 const router = createRouter ({
