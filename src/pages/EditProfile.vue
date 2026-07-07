@@ -89,5 +89,8 @@ import { updateUserProfile } from '../services/user-profiles.js';
             >
         </div>
         <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Actualizar</button>
+        <RouterLink to="/perfil" class="bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded transition-colors">
+            Volver
+        </RouterLink>
     </form>
 </template>

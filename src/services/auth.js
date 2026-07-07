@@ -1,5 +1,5 @@
 import supabase from "./supabase";
-import { fetchUserProfileById, updateUserProfile } from "./user-profiles";
+import { createUserProfile, fetchUserProfileById, updateUserProfile } from "./user-profiles";
 
 let observers = [];
 
@@ -58,6 +58,12 @@ export async function register({ email, password }) {
         console.error("Error al crear una cuenta de usuario:", error);
         throw new Error(error.message);
     }
+
+    await createUserProfile({
+        id: data.user.id,
+        email: data.user.email,
+    });
+    
     const user = data.user
     return user;
 }

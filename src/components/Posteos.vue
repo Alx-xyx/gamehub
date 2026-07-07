@@ -1,4 +1,6 @@
 <script>
+import { RouterLink } from 'vue-router';
+
     export default {
         name: 'Posteos',
         props: {
@@ -20,8 +22,8 @@
     <div class="mt-2 bg-zinc-950/50 border border-zinc-800/50 rounded-xl p-5 hover:border-blue-800/40 transition-all duration-300">
         
         <div class="flex items-center gap-2 mb-2">
-        <span class="font-semibold text-white">
-            {{ post.email }}
+        <span class="font-semibold text-blue-700">
+            <RouterLink :to="`/usuarios/${post.user_id}`">{{ post.email }}</RouterLink>
         </span>
         </div>
 

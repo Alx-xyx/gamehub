@@ -7,6 +7,7 @@ import Home from '../pages/Home.vue'
 import { subscribeToAuthStateChanges } from '../services/auth'
 import Profile from '../pages/Profile.vue'
 import EditProfile from '../pages/EditProfile.vue'
+import UserProfile from '../pages/UserProfile.vue'
 
 //? Creacion de rutas
 
@@ -17,6 +18,8 @@ const routes = [
     {path: '/feed', component: PublicChat, meta: { requiresAuth: true } },
     {path: '/perfil', component: Profile, meta: { requiresAuth: true } },
     {path: '/perfil/editar', component: EditProfile, meta: { requiresAuth: true } },
+    {path: '/usuarios/:id', component: UserProfile, meta: { requiresAuth: true } },
+
 ]
 
 const router = createRouter ({
