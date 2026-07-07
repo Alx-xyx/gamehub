@@ -8,6 +8,7 @@ import { subscribeToAuthStateChanges } from '../services/auth'
 import Profile from '../pages/Profile.vue'
 import EditProfile from '../pages/EditProfile.vue'
 import UserProfile from '../pages/UserProfile.vue'
+import PrivateChat from '../pages/PrivateChat.vue'
 
 //? Creacion de rutas
 
@@ -19,6 +20,7 @@ const routes = [
     {path: '/perfil', component: Profile, meta: { requiresAuth: true } },
     {path: '/perfil/editar', component: EditProfile, meta: { requiresAuth: true } },
     {path: '/usuarios/:id', component: UserProfile, meta: { requiresAuth: true } },
+    {path: '/usuarios/:id/chat', component: PrivateChat, meta: { requiresAuth: true } },
 
 ]
 

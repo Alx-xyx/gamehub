@@ -33,4 +33,5 @@ import { fetchUserProfileById } from '../services/user-profiles.js';
 <template>
     <BaseH1 class>Perfil de {{ user.email }}</BaseH1>
     <ProfileData :user="user"/>
+    <RouterLink :to="`/usuarios/${user.id}/chat`" class="font-semibold text-blue-700">Iniciar Conversacion con {{ user.email }}</RouterLink>
 </template>
