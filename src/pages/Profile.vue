@@ -29,6 +29,8 @@ import { fetchUserProfileById } from '../services/user-profiles.js';
 
 <template>
     <BaseH1 class>Mi perfil</BaseH1>
-    <RouterLink to="/perfil/editar" class="mb-4 text-blue-700 underline">Editar</RouterLink>
+    <RouterLink to="/perfil/editar" class="mb-4 text-blue-700 underline">Editar informacion</RouterLink>
+    <br>
+    <RouterLink to="/perfil/editar-avatar" class="mb-4 text-blue-700 underline">Editar avatar</RouterLink>
     <ProfileData :user="user"/>
 </template>
