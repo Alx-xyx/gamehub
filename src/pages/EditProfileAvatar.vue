@@ -19,8 +19,23 @@ export default {
     methods: {
         handleFileChange(event){
             console.log('Archivo seleccionado:', event.target.files[0]);
+
             this.photo.file = event.target.files[0];
+            
+            if (!this.photo.file) {
+                if (this.photo.preview) {
+                    URL.revokeObjectURL(this.photo.preview);
+                }
+                this.photo.preview = null;
+                return;
+            }
+
             this.photo.preview = URL.createObjectURL(this.photo.file);
+        }
+    },
+    unmounted(){
+        if(this.photo.preview){
+            URL.revokeObjectURL(this.photo.preview);
         }
     }
 }   
