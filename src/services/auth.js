@@ -1,3 +1,4 @@
+import { getFileUrl, uploadFile } from "./storage";
 import supabase from "./supabase";
 import { createUserProfile, fetchUserProfileById, updateUserProfile } from "./user-profiles";
 
@@ -29,6 +30,7 @@ supabase.auth.onAuthStateChange(async (event, session) => {
                         bio: profile?.bio ?? null,
                         nickname: profile?.nickname ?? null,
                         game_tag: profile?.game_tag ?? null,
+                        photo_url: profile?.photo_url ?? null,
                         profileFullyLoaded: true
                     })
                 })
@@ -63,7 +65,7 @@ export async function register({ email, password }) {
         id: data.user.id,
         email: data.user.email,
     });
-    
+
     const user = data.user
     return user;
 }
@@ -92,7 +94,7 @@ export async function logout() {
 }
 
 export async function updateCurrentUserProfile(data) {
-    await updateUserProfile(userData.id,{
+    await updateUserProfile(userData.id, {
         bio: data.bio,
         nickname: data.nickname,
         game_tag: data.game_tag
@@ -101,13 +103,28 @@ export async function updateCurrentUserProfile(data) {
     updateUserData({
         bio: data.bio,
         nickname: data.nickname,
-        game_tag: data.game_tag   
+        game_tag: data.game_tag
     });
+}
+
+export async function updateCurrentUserAvatar(file) {
+    const photoName = `${userData.id}/avatar.jpg`;
+    await uploadFile(file, photoName)
+    const photo_url = await getFileUrl(photoName)
+    updateUserProfile(
+        userData.id,
+            {
+            photo_url,
+            }
+    );
+    updateUserData({
+        photo_url
+    })
 }
 
 export async function refreshUserProfile() {
     if (!userData.id) return;
-    
+
     const profile = await fetchUserProfileById(userData.id);
     updateUserData({
         bio: profile?.bio ?? null,
